@@ -1,0 +1,114 @@
+<div class='page-header'>
+    <h1>Профайл</h1>
+</div>
+
+<div class='row'>
+    <div class="col-md-6">
+        <div class='panel'>
+            <div class='panel-heading'>
+                Активировать промо код
+                <br/>
+                <i>Активируя промокод, вы получите доступ на 7 дней ко всем функциям.</i>
+            </div>
+            <div class='panel-body'>
+                <input type='text' [(ngModel)]='foreignPromoCode' />
+                <button class='action-button' (click)='applyPromoHandler()' [disabled]='!foreignPromoCode'>активировать промо код</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class='panel'>
+            <div class='panel-heading'>
+                Ваш промо код
+            </div>
+            <div class='panel-body'>
+                <input type='text' [(ngModel)]='promoCode' [hidden]='promoRegistered' />
+                <span [hidden]='!promoRegistered' class='promo'>{{promoCode}}</span>
+                <button class='action-button' (click)='registerPromoHandler()' [hidden]='promoRegistered' [disabled]='!promoCode'>зарегистрировать промо код</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class='row'>
+    <div class="col-md-6">
+        <div class='panel'>
+            <div class='panel-heading'>
+                Информация о лицензии
+            </div>
+            <div class='panel-body'>
+                <table>
+                    <thead>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                Название
+                            </td>
+                            <td></td>
+                            <td>
+                                {{LicenseModel.Name}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Лицензия заканчивается через
+                            </td>
+                            <td></td>
+                            <td>
+                                {{restDays(LicenseModel.End_Date)}} дней
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Открыт доступ к
+                            </td>
+                            <td></td>
+                            <td>
+                                {{getAccess()}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class='row'>
+    <div class="col-md-12">
+        <div class='panel'>
+            <div class='panel-heading'>
+                Ваша очередь запросов
+            </div>
+            <div class='panel-body'>
+                <table class="table table-bordered" [hidden]='empty'>
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>название</th>
+                            <th>прогресс</th>
+                            <th>добавлен в очередь</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let request of requests'>
+                            <th scope="row">{{request.Id}}</th>
+                            <td><span [hidden]='request.Progress == 100'>{{request.Name}}</span> <a routerLink="/results/{{request.Id}}"
+                                    routerLinkActive="active" [hidden]='request.Progress < 100'>{{request.Name}}</a></td>
+                            <td>{{(request.Progress || 0).toFixed(2)}}%</td>
+                            <td>{{getDateString(request.CreatedOn)}}</td>
+                            <td><button class='cancel-button' (click)='cancelHandler(request.Id)' [hidden]='request.Progress > 0'>убрать из очереди</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div [hidden]='queueReady' class='form-loading form-loading-inverted' style='height:200px;'></div>
+                <div [hidden]='!empty'>
+                    <p>очередь пуста</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

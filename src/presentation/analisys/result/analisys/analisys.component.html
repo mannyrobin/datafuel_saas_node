@@ -1,0 +1,282 @@
+<div class="panel-body">
+    <div [hidden]='!errorMessage'>{{errorMessage}}</div>
+    <div [hidden]='type == "segment" || empty'>
+        <div class='row'>
+            <div class='panel'>
+                <div class='panel-body'>
+                    <button class='action-button' (click)='exportResultHandler()'>экспортировать в excel</button>
+                    <button class='action-button' (click)='exportUsers()'>экспортировать людей в excel</button>
+                    <button class='action-button float-left' *ngIf='exportSegmentsAvailable' (click)='showExportDialog()'>экспортировать в кабинет</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class='panel'>
+                <div class='panel-title'>
+                    Демография
+                </div>
+                <hr/>
+                <div class='panel-body'>
+                    <div class='row'>
+                        <div class="col-md-6">
+                            <div class="panel">
+                                <div class="panel-title">
+                                    Пол
+                                </div>
+                                <hr/>
+                                <div class="panel-body">
+                                    <div id="sex_placeholder" class="char-container " style='cursor: pointer;'></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="panel">
+                                <div class="panel-title">
+                                    Возраст
+                                </div>
+                                <hr/>
+                                <div class="panel-body">
+                                    <div id="bday_placeholder" class="char-container "></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class="col-md-6">
+                            <div class="panel">
+                                <div class=" panel-title">
+                                    Семейное положение
+                                </div>
+                                <hr/>
+                                <div class="panel-body">
+                                    <div id="relation_placeholder" class="char-container"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="panel">
+                                <div class="panel-title">
+                                    Города
+                                </div>
+                                <hr/>
+                                <div class="panel-body">
+                                    <div id="city_placeholder" class="char-container "></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class='panel'>
+                <div class='panel-title'>
+                    Интересы
+                </div>
+                <hr/>
+                <div class='panel-body'>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="panel">
+                                <div class="panel-title">
+                                    Популярные группы
+                                </div>
+                                <hr/>
+                                <div class="panel-body popular-groups">
+                                    <table class="table table-bordered" *ngIf="groupsReady">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Название группы</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tr *ngFor="let result of popularGroupsInfo" scope="row">
+                                            <td>{{popularGroupsInfo.indexOf(result) + 1}}</td>
+                                            <td>
+                                                <img [src]="result.img" />
+                                                <a href='{{result.url}}' target='_blank'>
+                                                    {{ result.name }}
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <button class='action-button' (click)='showConfirmDialogHandler(result.url, result.name)'>проанализировать</button>
+                                            </td>
+                                        </tr>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!--div class="col-md-6">
+                                <div class="panel">
+                                    <div class="panel-title">
+                                        Рейтинг интересов
+                                    </div>
+                                    <hr/>
+                                    <div class="panel-body">
+                                        <div id="interests_placeholder" class="char-container "></div>
+                                    </div>
+                                </div>
+                            </div-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="panel">
+                <div class="panel-title">
+                    Психотипы
+                </div>
+                <hr/>
+                <div class="panel-heading">
+                    <i>(нажмите на сегмент для перехода к описанию)</i>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="panel">
+                                <div class="panel-title">
+                                    Направленность
+                                </div>
+                                <hr/>
+                                <div class="panel-body">
+                                    <horizontal-graph [data]="Introvert"></horizontal-graph>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="panel">
+                                <div class="panel-title">
+                                    Восприятие
+                                </div>
+                                <hr/>
+                                <div class="panel-body">
+                                    <horizontal-graph [data]="Perception"></horizontal-graph>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="panel">
+                                <div class="panel-title">
+                                    Мышление
+                                </div>
+                                <hr/>
+                                <div class="panel-body">
+                                    <horizontal-graph [data]="Thought"></horizontal-graph>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="panel">
+                                <div class="panel-title">
+                                    Тактика
+                                </div>
+                                <hr/>
+                                <div class="panel-body">
+                                    <horizontal-graph [data]="Tactics"></horizontal-graph>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="panel">
+                                <div class="panel-title">
+                                    Стимулы
+                                </div>
+                                <hr/>
+                                <div class="panel-body clubs">
+                                    <div id="club_placeholder" class="char-container "></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="panel">
+                                <div class="panel-title">
+                                    Психотипы
+                                </div>
+                                <hr/>
+                                <div class="panel-body">
+                                    <div id="mbti_placeholder" class="char-container " style='cursor: pointer;'></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class='panel'>
+                <div class='panel-title'>
+                    Взгляды
+                </div>
+                <div class='panel-body'>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="panel">
+                                <div class="panel-title">
+                                    Жизненные цели
+                                </div>
+                                <hr/>
+                                <div class="panel-body">
+                                    <div id="life_placeholder" class="char-container "></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="panel">
+                                <div class="panel-title">
+                                    В людях главное
+                                </div>
+                                <hr/>
+                                <div class="panel-body">
+                                    <div id="people_placeholder" class="char-container "></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <div [hidden]='!empty'>{{emptyMessage}}
+        <div class="progress">
+            <div class="progress-bar progress-bar-warning progress-bar-striped active" [style.width]="progress + '%'"></div>
+        </div>
+
+    </div>
+    <div *ngIf='type == "segment"'>
+        <result-segment [segments]='segments' [name]='name'></result-segment>
+    </div>
+</div>
+
+<div class="modal fade export-lightbox" [ngClass]="{'in data-fuel-display' : exportSegmentModal }">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class='modal-header'>
+                Экспорт
+            </div>
+            <div class="modal-body">
+                <result-segment [segments]='segments' [name]='name'></result-segment>
+            </div>
+            <div class='modal-footer'>
+                <button class='cancel-button' (click)='showExportDialogHandler()'>отмена</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-backdrop fade in" [hidden]="!exportSegmentModal && !showConfirm && !showGroupConfirm"></div>

@@ -1,0 +1,21 @@
+.prepare-bill-button {
+    position: absolute;
+    right: 125px;
+}
+
+label span{
+    font-weight: normal;
+}
+
+.form-group-lg .switcher>input:checked~.switcher-indicator:after, .switcher-lg>input:checked~.switcher-indicator:after {
+    left: 91px;
+}
+
+.form-group-lg .switcher .switcher-indicator, .switcher-lg .switcher-indicator {
+    width: 120px;
+}
+
+.panel{
+    max-height: 400px;
+    overflow-y: auto;
+}

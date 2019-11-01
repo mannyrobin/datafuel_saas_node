@@ -1,0 +1,50 @@
+<div class='page-header'>
+    <h1>Результаты</h1>
+</div>
+<div class='panel'>
+    <div>
+        <div class="table-primary">
+            <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                <div class="table-header clearfix">
+                    <div class="DT-lf-right">
+                        <div class="DT-per-page">
+                            <div class="dataTables_length">
+                                <select [(ngModel)]='itemsPerPage' style="float: right;" (change)='changeRowsCount($event)' class='form-control input-sm'>
+                                            <option value='10'>10</option>
+                                            <option value='25'>25</option>
+                                            <option value='50'>50</option>
+                                            <option value='100'>100</option>
+                                        </select>
+                            </div>
+                        </div>
+                        <div class="DT-search">
+                            <div class="dataTables_filter">
+                                <input *ngIf="config.filtering" placeholder="Filter all columns" [ngTableFiltering]="config.filtering" class="input-sm form-control"
+                                    (tableChanged)="onChangeTable(config)" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dataTables_table_wrapper">
+                    <ng-table [config]="config" (tableChanged)="onChangeTable(config)" (cellClicked)="onCellClick($event)" [rows]="rows" [columns]="columns"
+                        *ngIf="results.length > 0">
+                        </ng-table>
+                        <div [hidden]='results.length > 0' class='form-loading form-loading-inverted' style='height:200px;'></div>
+                </div>
+                <div class="table-footer clearfix">
+                    <div class="DT-label">
+                        <div class="dataTables_info">
+                            Showing {{(page - 1) * itemsPerPage + 1}} to {{page * itemsPerPage}} of {{length}} entries.
+                        </div>
+                    </div>
+                    <div class="DT-pagination">
+                        <pagination *ngIf="config.paging" class="pagination-sm" [(ngModel)]="page" [totalItems]="length" [itemsPerPage]="itemsPerPage"
+                            [maxSize]="maxSize" [boundaryLinks]="true" [rotate]="false" (pageChanged)="onChangeTable(config, $event)"
+                            (numPages)="numPages = $event">
+                            </pagination>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

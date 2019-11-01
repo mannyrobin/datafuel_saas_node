@@ -1,0 +1,21 @@
+<div class='page-header'>
+    <h1>{{getType()}}</h1>
+</div>
+
+<div class='panel'>
+    <div class="panel-heading">
+        Ваш запрос выполняется
+    </div>
+    <div class="panel-body">
+        <div>
+            пожалуйста подождите
+        </div>
+        <div> {{getStatus()}}</div>
+
+        <div class="progress">
+            <div class="progress-bar progress-bar-warning progress-bar-striped active" [style.width]="progress + '%'"></div>
+        </div>
+
+        <button (click)='markBrokenHandler()' [hidden]='!hasPermissions' class='action-button analysis-button'>пометить результат сломанным</button>
+    </div>
+</div>

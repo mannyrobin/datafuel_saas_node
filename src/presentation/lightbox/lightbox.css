@@ -1,0 +1,73 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.75);
+    z-index: 10;
+  }
+.content {
+    z-index: 11;
+    position: relative;
+    height: 300px;
+    width: 350px;
+    top: 300px;
+    border: 1px solid #ccc;
+    background: #fff;
+    overflow: auto;
+    border-radius: 4px;
+    outline: none;
+    padding: 20px;
+    margin: 0 auto;
+  }
+
+.footer {
+    float: right;
+    position: relative;
+    bottom: 0;
+    right: 0;
+
+}
+
+.cancel-button {
+    padding: 5px 20px;
+    background: white;
+    border: 0;
+    float: right;
+}
+    .cancel-button:before{
+        content: '\2716';
+        top: 1px;
+        right: 1px;
+        position: relative;
+    }
+
+.email-popup-container {
+    height: 170px!important;
+}
+
+.show-feedback-lightbox-button,
+.show-feedback-lightbox-button:hover {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.feedback-lightbox-container {
+    width: 700px;
+    height: auto;
+}
+
+.playment-lightbox {
+    width: 600px;
+    height: 310px;
+}
+
+.in {
+    display: block;
+}
+
+.attach-file-lightbox-modal-dialog {
+    margin-top: 290px;
+}

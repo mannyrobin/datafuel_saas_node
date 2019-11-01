@@ -1,0 +1,210 @@
+
+.App {
+    padding: 20px;
+}
+    .App h1 {
+        font-size: 26px;
+    }
+    
+    .App input {
+        padding: 10px;
+    }
+
+    .App hr {
+        margin-top: 20px;
+    }
+
+.display-lightbox-button {
+    position: absolute;
+    margin-left: 247px;
+    margin-top: -104px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.row div {
+    margin-top: 20px;
+}
+
+.main-menu ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+li a.selected {
+    color: red;
+}
+
+.description {
+    font-size: 17px;
+}
+
+li a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+    font-weight: 700;
+}
+    li a:hover {
+        color: blue;
+    }
+
+    .main-menu li {
+        font-size: 16px; 
+    }
+
+.container {
+        width: 800px;
+        margin: 0 auto;
+}
+
+.right-panel {
+    padding-left: 50px;
+    background-color: white;
+    min-height: 200px;
+    margin-top: 60px;
+}
+
+.clearfix {
+        overflow: auto;
+}
+
+.tab-header {
+
+}
+
+.tab-content {
+        width: 605px;
+        height: 530px;
+}
+
+hr {
+        width: 100%;
+}
+
+p {
+        margin: 0 auto;
+        text-align: center; 
+}
+
+textarea {
+        height: 100px;
+        width: 550px;
+}
+
+.action-button {
+        padding: 5px 20px;
+        background: white;
+        border: 1px gray solid;
+        border-radius: 5px;
+        cursor: pointer;
+        float:right;
+}
+
+.profile {
+        height: 30px;
+        width: 30px;
+        position: relative;
+        margin-left: 200px;
+        cursor: pointer;
+}
+
+.header {
+        padding-bottom: 20px;
+        width: 800px;
+        margin: 0 auto;
+}
+
+.help-button-link {
+        padding: 5px 7px;
+        border: 1px solid gray;
+        margin-left: 100px; 
+        top: 5px;
+        position: relative;
+        border-radius: 5px; 
+        text-decoration: none;
+}
+
+.help-button-container,
+.profile {
+        margin-top: 25px;
+}
+
+.span {
+        float: left;
+}
+
+.user-profile {
+        position: absolute;
+        border: 1px gray solid;
+        border-radius: 5px;
+        background-color: white;
+        margin-top: 57px;
+        margin-left: 531px;
+        z-index: 2;
+}
+
+.user-profile p {
+        border-bottom: 1px gray solid;
+        margin: 0;
+        padding-bottom: 5px;
+        padding-top: 5px;
+        cursor: pointer;
+}
+
+div.user-profile p:first-child {
+        cursor: default;
+}
+
+.image {
+        height: 300px;
+        width: 300px;
+}
+
+.login-page {
+        width: 800px;
+        height: 600px;
+        margin: 0 auto;
+        padding: 10px
+}
+
+button {
+        cursor: pointer;
+}
+
+button[disabled] {
+    background-color: gray; 
+}
+
+.waiting-tab .help-button-link {
+        margin-left: 0;
+        border: none;
+        top: 0;
+        padding-left: 0;
+}
+
+.float-right {
+        float: right!important;
+}
+
+.float-left {
+        float: left;
+}
+
+.display-none {
+    display: none;
+}
+
+.cancel-button {
+    padding: 5px 20px;
+    background: white;
+    border: 0;
+    float: right;
+}
+    .cancel-button:before{
+        content: '\2716';
+        top: 1px;
+        right: 1px;
+        position: relative;
+    }

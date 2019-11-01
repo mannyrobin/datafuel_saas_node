@@ -1,0 +1,48 @@
+<div class='px-responsive-bg background-img'>
+    <ul>
+        <li (click)='scrollTo("rate-container")' class='display-none'>
+            Тарифы
+        </li>
+        <li class='display-none'>
+            База знаний
+        </li>
+        <li (click)='scrollTo("blog-container")' class='display-none'>
+            Блог
+        </li>
+        <li (click)="clickHandler()" class='login-button'>
+            Войти
+        </li>
+    </ul>
+    <div class="welcome-page-text-container">
+        <div class="welcome-page-text">Привлекайте больше новых клиентов</div>
+        <div class="welcome-page-text">с помощью персонализации</div>
+        <div class="welcome-page-text">на основе психологии</div>
+    </div>
+    <div class="page-signin-modal modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="box m-a-0">
+                    <div class="box-row">
+                        <div class="" id="page-signin-social">
+                            <a (click)="clickHandler()" class="btn btn-block btn-lg btn-login">
+                                Войти через ВКонтакте
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <router-outlet></router-outlet>
+    <div class="px-responsive-bg-overlay" style="opacity: 0.2;"></div>
+    <!--div id='rate-container'>
+    <rate></rate>
+</div>
+<div id='blog-container' class='display-none'>
+    <blog></blog>
+</div>
+<div class='display-none'>
+    <knowledgeDataBase></knowledgeDataBase>
+</div-->
+</div>

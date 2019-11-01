@@ -1,0 +1,117 @@
+div.modal-content,
+div.box {
+    background-color: transparent;
+}
+
+ul { 
+    width: 160px;
+    display: block;
+    overflow: auto; 
+    display: flex;
+    width: 400px;
+}
+li { 
+    display: inline-block;
+}
+
+ul li {
+    margin: 5px;
+    padding: 10px 15px;
+    word-break: break-all;
+    cursor: pointer;
+}
+
+li a {
+    text-decoration: none;
+    color: black;
+}
+
+.login-button {
+    background-color: #D2D2D2;
+}
+
+.background-img
+{
+    background-repeat: repeat;
+    background-image: linear-gradient(rgb(255,165,57), rgb(229,90,90));
+    width:100%;
+    height: 100%;
+}
+
+.btn.btn-login,
+.btn.btn-login:hover,
+.btn.btn-login:active,
+.btn.btn-login:active:hover  {
+    background-color: rgb(74, 118, 168);
+    color: white;
+    font-size: 18px;
+}
+
+.welcome-page-text {
+    color: white;
+    font-size: 30px;
+    width: 600px;
+}
+
+.welcome-page-text-container{
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 180px;
+}
+
+.vk-icon
+{
+    background-repeat: no-repeat;
+    background-image: url("/vk.png");
+    height: 35px;
+}
+
+
+    .page-signin-modal {
+      position: relative;
+      top: auto;
+      right: auto;
+      bottom: auto;
+      left: auto;
+      z-index: 1;
+      display: block;
+    }
+
+    .page-signin-form-group { position: relative; }
+
+    .page-signin-icon {
+      position: absolute;
+      line-height: 21px;
+      width: 36px;
+    /*  border-color: rgba(0, 0, 0, .14);*/
+      border-right-width: 1px;
+      border-right-style: solid;
+      left: 1px;
+      top: 9px;
+      text-align: center;
+      font-size: 15px;
+    }
+
+    html[dir="rtl"] .page-signin-icon {
+      border-right: 0;
+      border-left-width: 1px;
+      border-left-style: solid;
+      left: auto;
+      right: 1px;
+    }
+
+    html:not([dir="rtl"]) .page-signin-icon + .page-signin-form-control { padding-left: 50px; }
+    html[dir="rtl"] .page-signin-icon + .page-signin-form-control { padding-right: 50px; }
+
+    #page-signin-forgot-form {
+      display: none;
+    }
+
+    /* Margins */
+
+    .page-signin-modal > .modal-dialog { margin: 30px 10px; }
+
+    @media (min-width: 544px) {
+      .page-signin-modal > .modal-dialog { margin: 60px auto; }
+    }
+  

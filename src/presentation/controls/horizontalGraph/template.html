@@ -1,0 +1,15 @@
+<div class="container-graph">
+    <div class="row">
+        <div class='col-md-6' style="float:left" (click)='navigate(data.Right.Url)'>{{data.Left.Title}} {{(100 - data.RightValue).toFixed(2) + '%'}} </div>
+        <div class='col-md-6' style="float:right; text-align: right;" (click)='navigate(data.Left.Url)'>{{data.Right.Title}} {{data.RightValue.toFixed(2) + '%'}}</div>
+    </div>
+    <div class="row left-part" (click)='navigate(data.Left.Url)'>
+        <div style="
+    width: 10%;
+    border-right: solid 3px black;
+    height: 31px;
+    float: left;
+    margin-top: -5px;" [style.width]='data.Median + "%"' ></div>
+        <div class="right-part" [style.margin-top]='getMarginTop()' [style.width]="data.RightValue + '%'" (click)='navigate(data.Right.Url, $event)'>  </div>
+    </div>
+</div>

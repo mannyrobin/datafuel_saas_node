@@ -1,0 +1,8 @@
+<h1>Тарифы</h1>
+<div class='row'>
+    <div class="col-xs-3 col-md-2" *ngFor='let rate of rates'>
+        <div class="">{{rate.Name}}</div>
+        <div class="">количество пользователей которых можно обработать: {{rate.Request}}</div>
+        <div class="">цена: {{rate.Cost}}</div>
+    </div>
+</div>

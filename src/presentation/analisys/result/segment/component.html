@@ -1,0 +1,62 @@
+<div class="row">
+    <div class='col-md-12'>
+        <div> для загрузки сегмента в рекламный кабинет укажите Id рекламного кабинета</div>
+        <input type="text" [(ngModel)]='advertisementAccountId' (ngModelChange)='updateAccountIdHandler()' />
+    </div>
+</div>
+<div class="row">
+    <div class='col-md-12'>
+        <div> введите название аудитории</div>
+        <input type="text" class='export-group-name' [(ngModel)]='exportGroupName'  (ngModelChange)='exportGroupNameChangedHandler()' />
+    </div>
+</div>
+<div class='panel'>
+    <div class='panel-title'>
+        {{getTitle()}}
+    </div>
+    <hr />
+    <div class='row'>
+        <div class='col-md-12' [hidden]='selectedSegments.length == 0'>
+            <button class='action-button combine-button' (click)='exportSelectedSegmentsHandler()' [disabled]='actionButtonDisabled'>экспортировать выбранные сегменты</button>
+        </div>
+    </div>
+    <div [hidden]='!errorMessage'>
+        <span style="color:red">{{errorMessage}}</span>
+    </div>
+    <div class='row'>
+        <div class='col-md-4'>
+            <button class='action-button filter-button' (click)='selectLogicsHandler()' [disabled]='actionButtonDisabled'>Романтики</button>
+            <button class='action-button filter-button' (click)='selectIntuitHandler()' [disabled]='actionButtonDisabled'>Новаторы</button>
+        </div>
+        <div class='col-md-4'>
+            <button class='action-button filter-button' (click)='selectSensorsHandler()' [disabled]='actionButtonDisabled'>Прагматики</button>
+            <button class='action-button filter-button' (click)='selectEticsHandler()' [disabled]='actionButtonDisabled'>Консерваторы</button>        
+        </div>
+    </div>
+    <div *ngFor="let segment of segments" class='row'>
+        <div class='col-md-8' [hidden]='!!advertisementAccountId'>
+            <button (click)='downloadFileHandler(segment.Type)' class='action-button' [disabled]='actionButtonDisabled'>{{resources[segment.Type]}} - {{segment.Type}} ({{segment.Count}})</button>
+        </div>
+        <div class='col-md-8' [hidden]='!advertisementAccountId'>
+            <button (click)='importTargetContactsHandler([segment.Type])' class='action-button'>{{resources[segment.Type]}} - {{segment.Type}} ({{segment.Count}}) {{segment.Age}}</button>
+        </div>
+        <div class='col-md-3'>
+            <label><input type="checkbox" [(ngModel)]='segment.Selected' value='{{segment.Type}}' (change)='selectSegmentHandler($event)'/></label>
+        </div>
+    </div>
+</div>
+
+<div *ngIf='inProgress' class='modal fade in data-fuel-display'>
+    <div class='modal-dialog'>
+        <div class="modal-content">
+            <div class="modal-body">Идет импорт пользователей это может занять некоторое время (скорость импорта ~5000 в минуту). Пожайлуста не
+                закрывайте страницу до завершения импорта.
+                <div class="progress test-progress">
+                    <div class="progress-bar progress-bar-warning progress-bar-striped active" [style.width]="progress + '%'" style="top: 50%; height: 20px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-backdrop fade in" [hidden]="!inProgress"></div>

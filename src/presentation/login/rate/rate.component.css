@@ -1,0 +1,19 @@
+ul { 
+    width: 160px;
+    display: block;
+    overflow: auto; 
+    display: flex;
+    width: 400px;
+}
+li { 
+    display: inline-block;
+}
+
+.rate div {
+    height: 100px;
+    width: 100px;
+    background-color: gray;
+    margin: 20px;
+    word-break: break-all;
+    color: white;
+}

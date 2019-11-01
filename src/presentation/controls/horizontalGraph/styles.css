@@ -1,0 +1,17 @@
+.right-part {
+    background-color: red;
+    float: right;
+    height: 20px;
+}
+
+.left-part {
+    background-color: blue;
+    width: 100%;
+    height: 20px;
+    cursor: pointer;
+}
+
+.container-graph .left-part.row {
+    margin-left: 0;
+    margin-right: 0;
+}

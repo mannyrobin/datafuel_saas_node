@@ -1,0 +1,26 @@
+h4 {
+    margin-top: 10px!important;
+}
+
+.data-fuel-display {
+    display: block!important;
+    height: 100px;
+    z-index: 1011;
+}
+
+.cancel-button {
+    padding: 5px 20px;
+    background: white;
+    border: 0;
+    float: right;
+}
+    .cancel-button:before{
+        content: '\2716';
+        top: 1px;
+        right: 1px;
+        position: relative;
+    }
+
+.file-selected {
+    border-color: rgb(34, 177, 76);
+}

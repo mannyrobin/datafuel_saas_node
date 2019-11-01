@@ -1,0 +1,7 @@
+<lightbox [displayLightboxButton]='"show-feedback-lightbox-button"' [containerClass]='"feedback-lightbox-container"' [showButtonTitle]='childShowButtonTitle' (proceeded)='proceedHandler()'>
+    <div class='overlay'>
+        <h3>введите ваш комментарий</h3>
+        <textarea [(ngModel)]='comment'>        
+        </textarea>        
+    </div>
+</lightbox>

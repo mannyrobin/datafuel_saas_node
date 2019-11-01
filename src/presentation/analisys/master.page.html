@@ -1,0 +1,128 @@
+<div class=''>
+
+    <nav class="px-nav px-nav-left px-nav-animate px-nav-scrollable-area" id="px-demo-nav">
+        <button type="button" class="px-nav-toggle" data-toggle="px-nav">
+            <span class="px-nav-toggle-arrow"></span>
+            <span class="navbar-toggle-icon"></span>
+            <span class="px-nav-toggle-label font-size-11">HIDE MENU</span>
+        </button>
+        <ul class="px-nav-content">
+            <li class="px-nav-box p-a-3 b-b-1" id="demo-px-nav-box">
+                <!--img [src]="userPhoto" style='cursor: pointer' class="img-circle img-thumbnail" width='70px' (click)='showUserMenuHandler($event)' /-->
+
+                <img *ngIf="!!userPhoto" [src]="userPhoto" alt="" class="pull-xs-left m-r-2 border-round" style="width: 54px; height: 54px;">
+                <div class="font-size-16"><span class="font-weight-light">Добро пожаловать, </span><strong>{{getName()}}</strong></div>
+                <div>остаток реквестов:</div>
+                <div> {{requestsLimit}}</div>
+                <div>экспорт: </div>
+                <div>{{exportLimit}}</div>
+            </li>
+
+            <li class="px-nav-item" id="demo-px-nav-box">
+                <a routerLink="/analisys" routerLinkActive="active">
+                    <i class="px-nav-icon ion-erlenmeyer-flask"></i>
+                    <span class="px-nav-label">Анализ</span>
+                </a>
+            </li>
+
+            <li class="px-nav-item" id="demo-px-nav-box">
+                <a routerLink="/look-a-like" routerLinkActive="active">
+                    <i class="px-nav-icon ion-ios-analytics"></i>
+                    <span class="px-nav-label">Поиск похожих</span>
+                    <i [hidden]='hasLaLCapability'><br/><span>не подключено для вашего тарифа</span></i>
+                </a>
+            </li>
+
+            <li class="px-nav-item" id="demo-px-nav-box">
+                <a routerLink="/results" routerLinkActive="active">
+                    <i class="px-nav-icon ion-ios-keypad"></i>
+                    <span class="px-nav-label">Результаты</span>
+                </a>
+            </li>
+
+            <li class="px-nav-item" id="demo-px-nav-box" [hidden]='!hasAdminCapability'>
+                <a routerLink="/admin" routerLinkActive="active">
+                    <i class="px-nav-icon ion-cube"></i>
+                    <span class="px-nav-label">Админка</span>
+                </a>
+            </li>
+
+            <li class="px-nav-item" id="demo-px-nav-box" [hidden]='!hasSearchByPhoneCapability'>
+                <a routerLink="/searchByPhone" routerLinkActive="active">
+                    <i class="px-nav-icon ion-cube"></i>
+                    <span class="px-nav-label">Обогащение</span>
+                </a>
+            </li>
+
+            <li class="px-nav-item" id="demo-px-nav-box">
+                <a routerLink="/user-profile" routerLinkActive="active">
+                    <i class="px-nav-icon ion-ios-pulse-strong"></i>
+                    <span class="px-nav-label">профайл пользователя</span>
+                </a>
+            </li>
+
+            <!--li class="px-nav-box p-a-3 b-b-1" id="demo-px-nav-box">
+                    <ul class="px-nav-content ps-container ps-theme-default">
+                        <li class="px-nav-item"> <a routerLink="/analisys" (click)='changeSelectedTab("Анализ", $event)' routerLinkActive="active">Анализ</a></li>
+                        <li class="px-nav-item"><a routerLink="/segment" (click)='changeSelectedTab("Сегментация", $event)' routerLinkActive="active">Сегментация</a></li>
+                        <li class="px-nav-item"><a routerLink="/results" (click)='changeSelectedTab("Результаты", $event)' routerLinkActive="active">Результаты</a></li>
+                    </ul>
+                </li-->
+            <div class="ps-scrollbar-x-rail">
+                <div class="ps-scrollbar-x">
+                </div>
+            </div>
+
+            <div class="ps-scrollbar-y-rail">
+                <div class="ps-scrollbar-y">
+                </div>
+            </div>
+
+        </ul>
+    </nav>
+    <div class='px-content'>
+
+        <router-outlet></router-outlet>
+    </div>
+    <!--div class='row'>
+        <div class='col-xs-3 col-md-2 main-menu'>
+            <ul>
+                <li> <a routerLink="/analisys" (click)='changeSelectedTab("Анализ", $event)' routerLinkActive="active" [ngClass]="{'selected': selectedTab == 'Анализ'}">Анализ</a></li>
+                <li><a routerLink="/segment" (click)='changeSelectedTab("Сегментация", $event)' routerLinkActive="active" [ngClass]="{'selected': selectedTab == 'Сегментация'}">Сегментация</a></li>
+                <li><a routerLink="/results" (click)='changeSelectedTab("Результаты", $event)' routerLinkActive="active" [ngClass]="{'selected': selectedTab == 'Результаты'}">Результаты</a></li>
+            </ul>
+        </div>
+        <div class="col-xs-15 col-md-10 right-panel-container">
+        </div>
+    </div-->
+
+    <!--lightbox (proceeded)='proceedHandler($event)' #popup>
+        <div>
+            <div class="modal-header">
+                <h3>Добро пожаловать</h3>
+            </div>
+            <div class="">
+                <i>вы можете ввести эту информацию позже на странице "Профайл пользователя"</i>
+                <div class="modal-body">
+                    <div class='row'>
+                        <span>Введите email</span>
+                        <input type="email" name="email" [(ngModel)]='userEmail' style='width: 100%' autofocus/>
+                        <span [hidden]='emailValid'>введите корректный адрес</span>
+                    </div>
+                    <div class='row' [hidden]='!newUser'>
+                        <span>Введите promo code</span>
+                        <input type="email" name="email" [(ngModel)]='promo' style='width: 100%'/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </lightbox-->
+</div>
+
+<div id='toast-container' class='toast-top-center' [hidden]="!showSystemMessage">
+    <div class="toast toast-success" [ngClass]="systemMessageType">
+        <div class="toast-message">
+            {{message}}
+        </div>
+    </div>
+</div>

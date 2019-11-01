@@ -1,0 +1,79 @@
+ {
+     stats:
+    {
+        stats:
+        {
+            bday_stat:
+            {
+                count:,
+                stats:{
+                    mean:,
+                    median:,
+                    max:,
+                    min:,
+                    fst_quantile:,
+                    last_quantile:,
+                    std:,
+                    distribution:{-:,-:,-:,-:,-:,-:,-:,-:0}
+                }
+            },
+            country_stat:{
+                count:,
+                stats:[{Россия:0},{Украина:0},{Russia:0},{Беларусь:0},{Россiя:0},{Казахстан:0},{Ukraine:0},{Росiя:0},{РСФСР:0}]},city_stat:{count:,stats:[{Москва:0},{Санкт-Петербург:0},{Новосибирск:0},{Киев:0},{Екатеринбург:0},{Самара:0},{Казань:0},{Ростов-на-Дону:0},{Минск:0}]},people_main_stat:{count:,stats:[{Доброта и честность:0},{Ум и креативность:0},{Юмор и жизнелюбие:0},{Смелось и упорство:0},{Власть и богатство:0},{Крастота и здоровье:0}]},life_main_stat:{count:,stats:[{Саморазвитие:0},{Семья и дети:0},{Совершенствования мира:0},{Наука и исследования:0},{Слава и влияние:0},{Развлечения и отдых:0},{Карьера и деньги:0}]},sex_stat:{count:,stats:{M:,F:0}},relation_stat:{count:,stats:[{Не заключен/а в узы брака:0},{Женат/Замужем:0},{Влюблен/a:0},{В активном поиске:0},{Есть друг/подруга:0},{Помолвлен/а:0},{Все сложно:0}]},popular_groups_stat:{count:,stats:[{:0},{:0},{:0},{:0},{:0},{:0},{:0},{:0},{:0},{:0},{:0},{:0},{:0},{:0},{:0},{:0},{:0},{:0},{:0},{:0},{:0},{:0},{:0},{:0},{:0},{:0},{:0},{:0},{:0},{:0}]
+            },
+            interests:{count:,stats:[{наука:0},{музыка:0},{психология:0},{новости:0},{бизнес:0},{юмор:0},{искусство:0},{дизайн:0},{бесплатно, конкурсы:0},{путешествия:0},{дети - мамы:0},{рок:0},{татуировки:0},{технологии:0},{фотография:0},{литература:0},{фитнес:0},{цитаты:0},{реклама и маркетинг:0},{философия:0},{интерьеры:0},{рэп:0},{програмирование:0},{саморазвитие:0},{футбол:0},{любовь:0},{иностранные языки:0},{diy:0},{гороскоп:0},{мемы:0},{егэ:0},{эстетика:0},{коты:0},{медицина:0},{стартап:0},{кулинария:0},{geek:0},{hipster:0},{архитектура:0},{smm:0},{уют:0},{политика:0},{эзотерика:0},{национализм:0},{собаки:0},{правильное питание:0},{instagram:0},{секс:0},{автомобили:0},{знакомства:0},{православие:0},{порно:0},{недвижимость:0},{математика:0},{dance music:0},{фриланс:0},{карьера:0},{медитации:0},{будизм:0},{двач:0},{gamer:0},{зож:0},{концерты:0},{хоккей:0},{выставки:0},{патриоты:0},{поиск работы:0},{data science:0},{мусульман:0},{web дизайн:0},{анимэ:0}]},
+            mbti_stat:{count:,stats:[{INTP:0},{ENFP:0},{INTJ:0},{ENTP:0},{ENFJ:0},{INFP:0},{ISTJ:0},{INFJ:0},{ENTJ:0},{ISFJ:0},{ESFJ:0},{ISFP:0},{ISTP:0},{ESTP:0},{ESFP:0},{ESTJ:0}]}},
+            segments:{ISTP:[],ISTJ:[],ISFP:[],ISFJ:[],INTP:[],INTJ:[],INFP:[],INFJ:[],ESTP:[],ESTJ:[],ESFP:[],ESFJ:[],ENTP:[],ENTJ:[],ENFP:[],ENFJ:[]}},added:0}
+    }
+ }
+
+ 
+{
+     stats:
+    {
+        stats:
+        {
+            bday_stat: {
+                count:,
+                stats:{
+                    mean:0,
+                    median:0,
+                    max:0,
+                    min:0,
+                    fst_quantile:0,
+                    last_quantile:0,
+                    std:0,
+                    distribution:{}
+                }
+            },
+            country_stat:{
+                count:0,
+                stats:[],
+                city_stat:{count:0,stats:[]}
+            },
+            people_main_stat:{count:0,stats:[]},
+            life_main_stat:{count:0,stats:[]},
+            sex_stat:{count:0,stats:{M:0,F:0}},
+            relation_stat:{count:0,stats:[]},
+            popular_groups_stat:{count:0,stats:[]},
+            interests:{count:0,stats:[]},
+            mbti_stat:{count:0,stats:[{INTP:0},{ENFP:0},{INTJ:0},{ENTP:0},{ENFJ:0},{INFP:0},{ISTJ:0},{INFJ:0},{ENTJ:0},{ISFJ:0},{ESFJ:0},{ISFP:0},{ISTP:0},{ESTP:0},{ESFP:0},{ESTJ:0}]}
+        },
+        
+        segments:{ISTP:[],ISTJ:[],ISFP:[],ISFJ:[],INTP:[],INTJ:[],INFP:[],INFJ:[],ESTP:[],ESTJ:[],ESFP:[],ESFJ:[],ENTP:[],ENTJ:[],ENFP:[],ENFJ:[]}
+    },
+    added:
+}
+    
+
+ {"age":{"not_null_count":116,"mean":35.85344827586207,"std":19.50828926836895},"friends_count":{"not_null_count":219,"mean":259.0365296803653,"std":674.0344818211063},
+ "groups_count":{"not_null_count":225,"mean":184.11111111111111,"std":231.82859781621445},
+ "relations_distribution":{"single":12,"in_relationship":0,"engaged":1,"married":19,"complicated":1,"actively_searching":7,"in_love":1},
+ "life_main_distibution":{"familly_and_children":7,"career_and_money":2,"entertainment_and_leisure":0,"science_and_research":0,"improving_the_world":1,"personal_development":6,"beauty_and_art":0,"fame_and_influence":1},"people_main_distibution":{"intellect_and_creativity":3,"kindness_and_honesty":6,"health_and_beauty":1,"wealth_and_power":0,"courage_and_persistance":2,"humor_and_love_for_life":5},"MBTI":{"types_distribution":{"ISTJ":108,"ISTP":18,"ISFJ":19,"ISFP":6,"INTJ":23,"INTP":35,"INFJ":2,"INFP":5,"ESTJ":14,"ESTP":3,"ESFJ":5,"ESFP":1,"ENTJ":8,"ENTP":12,"ENFJ":6,"ENFP":2},"basis_distribution":{"IE":{"mean":64.37827715355806,"std":15.222051076624519},"SN":{"mean":55.28464419475655,"std":11.950642413146072},"TF":{"mean":63.352059925093634,"std":11.673925997331212},"JP":{"mean":46.89887640449438,"std":8.393922730907136}}},
+ "topn_groups":[{"id":146709174,"count":222},{"id":19008613,"count":37},{"id":27895931,"count":35},{"id":25232578,"count":33},{"id":88042767,"count":33},{"id":72973891,"count":31},{"id":31199231,"count":30},{"id":151016287,"count":29},{"id":19725769,"count":29},{"id":134533652,"count":28}]}
+
+
+  Cannot create property 'undefined' on number '146709174'
+
+  {"familly_and_children":8,"career_and_money":2,"entertainment_and_leisure":0,"science_and_research":0,"improving_the_world":2,"personal_development":6,"beauty_and_art":0,"fame_and_influence":1}
+[{"familly_and_children":0.025974025974025976},{"career_and_money":0.006493506493506494},{"entertainment_and_leisure":0},{"science_and_research":0},{"improving_the_world":0.006493506493506494},{"personal_development":0.01948051948051948},{"beauty_and_art":0},{"fame_and_influence":0.003246753246753247}]

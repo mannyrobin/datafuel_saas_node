@@ -1,0 +1,13 @@
+<lightbox [displayLightboxButton]='"show-feedback-lightbox-button"' [showButtonTitle]='childShowButtonTitle' [hideFooter]='true' (canceled)='canceledHandler()'
+    (proceeded)='payHandler($event)' [containerClass]='"playment-lightbox"' #popup>
+
+    <h3>введите сумму для пополнения счета</h3>
+    <form ngNoForm action='https://money.yandex.ru/eshop.xml' target="_blank" method='post'>
+        <input name="sum" [(ngModel)]='sum' type="number"/>
+        <div [hidden]='!hasError'>{{errorMessage}}</div>
+        <input name="shopId" value='130413' type="hidden"/>
+        <input name="scid" value='95153' type="hidden"/>
+        <input name="customerNumber" [ngModel]='userId' type="hidden"/>
+        <button type='submit' (click)="proceedHandler()">перейти в яндекс для оплаты</button>
+    </form>
+</lightbox>

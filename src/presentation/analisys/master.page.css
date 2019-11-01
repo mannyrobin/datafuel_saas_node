@@ -1,0 +1,52 @@
+.page-header {
+    position: absolute;
+    top: 30px;
+    margin-left: 700px;
+}
+
+.page-container {
+    background-color: #f4f4f4;
+}
+
+.logout {
+}
+
+.user-name {
+}
+
+.row {
+    background-color: #f4f4f4;
+    height: 100%;
+}
+
+.col-xs-15.col-md-10,
+.col-xs-12.col-md-8, 
+.col-xs-9.col-md-6 {
+    background-color: white;
+    height: 100%;
+}
+
+.row div.right-panel-container {
+    margin-top: 20px;
+    min-height: 200px;
+}
+
+.ng-dirty.ng-invalid {
+   border-color: red;
+ }
+
+ .scrollable-area {
+     position: fixed!important;
+ }
+
+ .px-content{
+     margin-top: 48px;
+ }
+
+ .px-nav-scrollable-area {
+     position: fixed!important;
+ }
+
+li[hidden]{
+    display: none!important;
+}

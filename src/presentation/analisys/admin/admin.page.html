@@ -1,0 +1,185 @@
+<div class='page-header'>
+    <h1>Админка</h1>
+</div>
+
+<div class='row'>
+    <div class="col-md-6">
+        <div class='panel'>
+            <div class="panel-heading">
+                выдача реквестов
+            </div>
+            <div class="panel-body">
+                <div class='row'>
+                    <div class="col-md-6">
+                        пользователь
+                    </div>
+                    <div class="col-md-6">
+                        количество реквестов
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class="col-md-6">
+                        <input type='test' [(ngModel)]='userId' />
+                    </div>
+                    <div class="col-md-6">
+                        <input type='text' [(ngModel)]='requests' />
+                    </div>
+                </div>
+                <div class='row'>
+                    <button class='action-button' (click)='proceedHandler()' [disabled]='userId == null'>выдать</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class='panel'>
+            <div class="panel-heading">
+                изменить тариф
+            </div>
+            <div class="panel-body">
+                <div class='row'>
+                    <div class="col-md-6">
+                        пользователь
+                    </div>
+                    <div class="col-md-6">
+                        тариф
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class="col-md-6">
+                        <input type='test' [(ngModel)]='userId' (change)='userIdChangedHandler($event)' />
+                    </div>
+                    <div class="col-md-6">
+                        <select [(ngModel)]='rateId' style="float: right;" class='form-control input-sm'>
+                            <option *ngFor="let rate of rates" value='{{rate.Id}}'>{{rate.Name}}({{rate.Limitation}})</option>
+                        </select>
+                    </div>
+                </div>
+                <div class='row'>
+                    <button class='action-button' (click)='setRateHandler()' [disabled]='userId == null'>выдать</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class='row'>
+    <div class="col-md-6">
+        <div class='panel'>
+            <div class="panel-heading">
+                выдать права
+            </div>
+            <div class="panel-body">
+                <div class='row'>
+                    <div class="col-md-6">
+                        пользователь
+                    </div>
+                    <div class="col-md-6">
+                        права на
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class="col-md-6">
+                        <input type='test' [(ngModel)]='userId' />
+                    </div>
+                    <div class="col-md-6">
+                        <select [(ngModel)]='permissions' style="float: right;" class='form-control input-sm'>
+                            <option *ngFor="let rate of capabilitiesArray" value='{{rate.value}}'>{{rate.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class='row'>
+                    <button class='action-button' (click)='setPermissionsHandler()' [disabled]='userId == null'>выдать</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class='panel'>
+            <div class="panel-heading">
+                отобрать права
+                <br/>
+                <i>пока нельзя</i>
+            </div>
+            <div class="panel-body">
+                <div class='row'>
+                    <div class="col-md-6">
+                        пользователь
+                    </div>
+                    <div class="col-md-6">
+                        права на
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class="col-md-6">
+                        <input type='test' [(ngModel)]='userId' />
+                    </div>
+                    <div class="col-md-6">
+                        <select [(ngModel)]='permissions' style="float: right;" class='form-control input-sm'>
+                            <option *ngFor="let rate of capabilitiesArray" value='{{rate.value}}'>{{rate.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class='row'>
+                    <button class='action-button' (click)='ridPermissionsHandler()' [disabled]='userId == null'>выдать</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class='panel'>
+    <div class="panel-heading">
+        Пользователи
+    </div>
+    <div class="panel-body">
+        <div class="table-header clearfix">
+            <div class="DT-lf-right">
+                <div class="DT-per-page">
+                    <div class="dataTables_length">
+                        <select [(ngModel)]='itemsPerPage' style="float: right;" (change)='changeRowsCount($event)' class='form-control input-sm'>
+                            <option value='10'>10</option>
+                            <option value='25'>25</option>
+                            <option value='50'>50</option>
+                            <option value='100'>100</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="DT-search">
+                    <div class="dataTables_filter">
+                        <input *ngIf="config.filtering" placeholder="Filter all columns" [ngTableFiltering]="config.filtering" class="input-sm form-control"
+                            (tableChanged)="onChangeTable(config)" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dataTables_table_wrapper">
+            <ng-table [config]="config" (tableChanged)="onChangeTable(config)" (cellClicked)="onCellClick($event)" [rows]="rows" [columns]="columns"
+                *ngIf='users.length > 0'>
+            </ng-table>
+            <div [hidden]='users.length > 0' class='form-loading form-loading-inverted' style='height:200px;'></div>
+        </div>
+        <div class="table-footer clearfix">
+            <div class="DT-label">
+                <div class="dataTables_info">
+                    Showing {{(page - 1) * itemsPerPage + 1}} to {{page * itemsPerPage}} of {{length}} entries.
+                </div>
+            </div>
+            <div class="DT-pagination">
+                <pagination *ngIf="config.paging" class="pagination-sm" [(ngModel)]="page" [totalItems]="length" [itemsPerPage]="itemsPerPage"
+                    [maxSize]="maxSize" [boundaryLinks]="true" [rotate]="false" (pageChanged)="onChangeTable(config, $event)"
+                    (numPages)="numPages = $event">
+                </pagination>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" [ngClass]="{'in data-fuel-display' : showModal }">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>{{modalMessage}}</p>
+            </div>
+        </div>
+    </div>
+</div>

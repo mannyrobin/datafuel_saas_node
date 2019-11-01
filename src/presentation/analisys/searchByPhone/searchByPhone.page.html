@@ -1,0 +1,55 @@
+<div class='page-header'>
+    <h1>Анализ по списку телефонов</h1>
+</div>
+
+<div class='panel'>
+<div class="panel-heading">
+    <div class='col-xs-18 col-sm-6 col-md-12'><span class='description'>Детали запроса</span></div>
+</div>
+<div class="panel-body">
+    <div class='row'><h4> Название запроса: </h4></div>
+    <div class='row'><input style='width: 100%;' type='text' [(ngModel)]='name' /></div>
+    <div class='row'>
+        <h4> Тип шифрования </h4> 
+        <div class=''>
+            <label><input [(ngModel)]="hash" type='radio' name='hash' value='none'/><span>79xxxxxxxxx</span></label>
+            <label><input [(ngModel)]="hash" type='radio' name='hash' value='sha2_256'/><span>SHA-2 256</span></label>
+            <label><input [(ngModel)]="hash" type='radio' name='hash' value='sha3_256'/><span>SHA-3 256</span></label>
+        </div>
+    </div>
+
+    <div class='row'><h4> Сообщество </h4> </div>
+    <div class='row'>
+        <textarea style='width: 100%;' placeholder='Вставьте список телефонов или ' [ngClass]="{'file-selected' : fileSelected}" [(ngModel)]='phones' (ngModelChange)='onModelChangedHandler($event)'></textarea>
+        <attach-file-lightbox (fileUploaded)='fileChoosenHandler($event)' (fileLoaded)='fileLoaded($event)' [childShowButtonTitle]='uploadFileButtonTitle' [type]='type' [hidden]='!!phones'></attach-file-lightbox>
+    </div>
+    <div class='row'>
+        <div class='col-xs-12 col-sm-6 col-md-8'>
+        </div>
+        <div class='col-xs-6 col-md-4'><button (click)='runAnalisysHandler()' class='action-button analysis-button' [disabled]='!hasCapability || !ready'> Обогатить </button></div>
+    </div>
+</div>
+</div>
+
+<div class="modal fade" [ngClass]="{'in data-fuel-display' : showModal }">
+<div class="modal-dialog modal-sm">
+    <div class="modal-content">
+        <div class="modal-body">
+            <p>запрос поставлен в очередь</p>
+        </div>
+    </div>
+</div>
+</div>
+
+<div *ngIf='inProgress' class='modal fade in data-fuel-display'>
+<div class='modal-dialog'>
+    <div class="modal-content">
+        <div class="modal-body">Ваш запрос выполняется, идет передача данных на сервер, подождите пожалуйста
+            <div class="progress test-progress">
+                <div class="progress-bar progress-bar-warning progress-bar-striped active" [style.width]="progress + '%'" style="top: 50%; height: 20px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="modal-backdrop fade in" [hidden]="!inProgress"></div>

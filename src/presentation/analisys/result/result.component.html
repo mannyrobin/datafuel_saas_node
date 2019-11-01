@@ -1,0 +1,79 @@
+<div class='page-header'>
+    <h1>Результат</h1>
+</div>
+<div id="hover"></div>
+<div class='panel'>
+    <div class="panel-heading">
+        <div [hidden]='!nameUpdated'>
+            <span class="description">{{name}}</span>
+            <a (click)='nameEditHandler()'>изменить имя</a>
+        </div>
+        <div [hidden]='nameUpdated'>
+            <input type='text' [(ngModel)]='newName' />
+            <button (click)='nameChangeHandler()'>сохранить</button>
+            <button (click)='nameChangeCancelHandler()' class='cancel-button'>отмена</button>
+        </div>
+        <div>количество пользователей: {{totalCount}}</div>
+    </div>
+    <div [ngClass]='{"form-loading form-loading-inverted": !pageReady}'>
+        <div [hidden]='hideAnalisys'><analisys #analisysPanel></analisys></div>
+        <div [hidden]='type!="usersByPhones"'><result-phone [(name)]='name' #phonesPanel></result-phone></div>
+        
+    </div>
+    <div class='row'>
+        <button (click)='deleteHandler()' class='action-button analysis-button'>удалить результат</button>
+        <button (click)='markBrokenHandler()' [hidden]='!hasPermissions' class='action-button analysis-button' style='margin-right: 10px;'>пометить результат сломанным</button>
+    </div>
+</div>
+
+<div class="modal fade export-lightbox" [ngClass]="{'in data-fuel-display' : exportSegmentModal }">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class='modal-header'>
+                Экспорт
+            </div>
+            <div class="modal-body">
+                <result-segment [segments]='segments' [name]='name'></result-segment>
+            </div>
+            <div class='modal-footer'>
+                <button class='cancel-button' (click)='showExportDialogHandler()'>отмена</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade export-lightbox" [ngClass]="{'in data-fuel-display' : showConfirm }">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class='modal-header'>
+                запуск анализа
+            </div>
+            <div class="modal-body">
+                {{confirmDialogBody}}
+            </div>
+            <div class='modal-footer'>
+                <button class='cancel-button' (click)='hideConfirmDialogHandler()'>отмена</button>
+                <button class='action-button' (click)='runSexAnalisysHandler()'>ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade  export-lightbox" [ngClass]="{'in data-fuel-display' : showGroupConfirm }">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class='modal-header'>
+                запуск анализа
+            </div>
+            <div class="modal-body">
+                {{confirmDialogBody}}
+            </div>
+            <div class='modal-footer'>
+                <button class='cancel-button' (click)='hideGroupAnalisysHandler()'>отмена</button>
+                <button class='action-button' (click)='runGroupAnalisysHandler()'>ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-backdrop fade in" [hidden]="!exportSegmentModal && !showConfirm && !showGroupConfirm"></div>

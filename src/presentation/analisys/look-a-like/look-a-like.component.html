@@ -1,0 +1,87 @@
+<div class='page-header'>
+    <h1>Look alike</h1>
+</div>
+
+
+<div class='panel'>
+    <div class="panel-heading">
+        <div class='col-xs-18 col-sm-6 col-md-12'><span class='description'>Поиск похожих </span></div>
+    </div>
+
+    <div class="panel-body">
+        <div class='row'>
+            <div class='col-md-12'>
+                <h4> Название запроса: </h4>
+            </div>
+            <div class='col-md-12'>
+                <input style='width: 100%;' type='text' [(ngModel)]='name' />
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-md-12'>
+                <h4> Искать похожих на </h4>
+            </div>
+            <div class='col-md-12'>
+                <textarea style='width: 100%;' placeholder='Вставьте ссылку на сообщество или ' [(ngModel)]='sourceGroupId' (ngModelChange)='onModelChangedHandler($event)'></textarea>
+                <attach-file-lightbox (fileUploaded)='fileChoosenHandler($event, sourceGroupFile)' [guid]='guid' [type]='sourceGroupFile' [hidden]='!!sourceGroupId'></attach-file-lightbox>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-md-12'>
+                <h4> Искать похожих среди </h4>
+            </div>
+            <div class='col-md-12'>
+                <textarea style='width: 100%;' placeholder='Вставьте ссылку на сообщество или ' [(ngModel)]='targetGroupId' (ngModelChange)='onModelChangedHandler($event)'></textarea>
+                <attach-file-lightbox (fileUploaded)='fileChoosenHandler($event, targetGroupFile)' [guid]='guid' [type]='targetGroupFile' [hidden]='!!targetGroupId'></attach-file-lightbox>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-md-6'>
+                <div class=''>
+                    <h4> Количество сколько надо получить в ответ </h4>
+                </div>
+                <div class=''>
+                    <input type='number' [(ngModel)]="expectedCount" />
+                </div>
+            </div>
+            <div class='col-md-6'>
+                <div class=''>
+                    <h4> Сегментация по полу </h4>
+                </div>
+                <div class=''>
+                    <label><input [(ngModel)]="sex" type='radio' name='sex' value='0'/>Все</label>
+                    <label><input [(ngModel)]="sex" type='radio' name='sex' value='2'/>М</label>
+                    <label><input [(ngModel)]="sex" type='radio' name='sex' value='1'/>Ж</label>
+                </div>
+            </div>
+        </div>
+        <div class='row' style="margin-top: 20px;">
+            <div class='col-xs-12 col-sm-6 col-md-8'>
+            </div>
+            <div class='col-xs-6 col-md-4'><button (click)='runSegmentationHandler($event)' class='action-button analysis-button' [disabled]='!hasCapability || !ready'> Поиск & Анализ </button></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" [ngClass]="{'in data-fuel-display' : showModal }">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>запрос поставлен в очередь</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf='inProgress' class='modal fade in data-fuel-display'>
+    <div class='modal-dialog'>
+        <div class="modal-content">
+            <div class="modal-body">Ваш запрос выполняется, идет передача данных на сервер, подождите пожалуйста
+                <div class="progress test-progress">
+                    <div class="progress-bar progress-bar-warning progress-bar-striped active" [style.width]="progress + '%'" style="top: 50%; height: 20px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-backdrop fade in" [hidden]="!inProgress"></div>

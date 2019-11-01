@@ -1,0 +1,27 @@
+<div class='panel'>
+    <div class='panel-title'>
+        Обогащение
+    </div>
+    <hr />
+    <div class='row'>
+        <div class='col-md-2'>
+            загруженно
+        </div>
+        <div class='col-md-1'>
+            {{totalCount}}
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-2'>
+            найденно
+        </div>
+        <div class='col-md-1'>
+            {{resultCount}}
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-1'>
+            <button class='action-button combine-button' (click)='downloadFile()' [disabled]='actionButtonDisabled'>скачать</button>
+        </div>
+    </div>
+</div>

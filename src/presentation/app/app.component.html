@@ -1,0 +1,85 @@
+<div style='height: 100%; width: 100%' (click)='hideUserMenuHandler()'>
+<nav class="navbar px-navbar" [ngClass]="{' main-nav-bar': navigationMenuHidden == false}">
+    <!-- Header -->
+    <div class="navbar-header">
+        <div style="" class="logo-image"></div>
+        <a class="navbar-brand px-demo-brand" routerLink="/analisys">
+            <span class="px-demo-logo bg-primary"></span>
+        </a>
+    </div>
+
+<!-- Navbar togglers -->
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#px-demo-navbar-collapse" aria-expanded="false"><i class="navbar-toggle-icon"></i></button>
+
+
+<!-- Collect the nav links, forms, and other content for toggling -->
+<div class="collapse navbar-collapse" id="px-demo-navbar-collapse">
+    <!--ul class="nav navbar-nav">
+        <li><a href="#">Home</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>   (click)="showUserMenuHandler($event)"  userMenuHidden
+      </ul-->
+
+
+    <ul class="nav navbar-nav navbar-right" [hidden]='navigationMenuHidden'>
+        <li class="dropdown " [ngClass]="{'open': userMenuHidden == false}" (click)='showUserMenuHandler($event)'>
+                <a class="btn dropdown-toggle" *ngIf='!!userPhoto'>
+                    <img [src]="userPhoto" alt="" class="px-navbar-image">
+                    <span class="hidden-md">{{getName()}}</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <!--li><a href="#"><span>баланс: {{balance.toString().substr(1, balance.toString().length - 1)}}р</span></a></li-->
+                    <!--li><a href="#"><span>оставшиеся реквесты: {{requests}}</span></a></li-->
+                    <!--li ><a><playment-lightbox #playmentLightbox (balanceUpdated)='balanceUpdatedHandler($event)' [(userId)]='userId'></playment-lightbox></a></li-->
+                    <!--li ><a><rate-lightbox [selectedRate]='selectedRate'></rate-lightbox></a></li-->
+                    <!--li>[hidden]='!hasAdminCapability'<a><rate-lightbox [selectedRate]='selectedRate'></rate-lightbox></a></li-->
+                    <!--li><a><i class="dropdown-icon fa fa-cog"></i><feedback-lightbox (feedbackSent)='sendFeedbackHandler($event)'></feedback-lightbox></a></li-->
+                    <li><a target="_blank" href="https://datafuel.ru/paywall" (click)='navigateToPaywall()'>Оплатить подписку</a></li>
+                    <li class="divider"></li>
+                    <li (click)="logoutHandler()" ><a href="#"><i class="dropdown-icon fa fa-power-off"></i>&nbsp;&nbsp;Выход</a></li>
+                </ul>
+        </li>
+    </ul>
+</div>
+
+</nav>
+        <router-outlet></router-outlet>
+        
+<div style='width: 1150px; margin: 0 auto;'>
+<div class='container-fluid'>
+    <div class='row'>
+        <!--div class='col-xs-9 col-sm-6 col-md-6 logo-image'>
+                <h1 class='logo'>                    
+                    <a routerLink="/analisys" routerLinkActive="active">Data Fuel</a>
+                </h1>
+            </div>
+            <div class='col-xs-9 col-sm-6 col-md-6' [hidden]='navigationMenuHidden'>
+                <div style="float: right">
+                    <img [src]="userPhoto" style='cursor: pointer' class="img-circle img-thumbnail" width='70px' (click)='showUserMenuHandler($event)' />
+                    <div [hidden]='userMenuHidden' style='width:135px; background-color:white; position: absolute; z-index: 2; border: solid gray 1px; padding: 0 15px 15px 15px;' (click)='showUserMenuHandler($event)' >
+                        <div><span class='user-name'>{{getName()}}</span></div>
+                        <div><span>баланс: {{balance}}р</span></div>
+                        <div><span>оставшиеся реквесты: {{requests}}</span></div>
+                        <div></div>
+                        <!--div (click)="payHandler()" style='cursor: pointer'> обратная связь </div>
+                        <div><playment-lightbox #playmentLightbox (balanceUpdated)='balanceUpdatedHandler($event)'></playment-lightbox></div>
+                        <div><rate-lightbox [selectedRate]='selectedRate'></rate-lightbox> </div>
+                        <!--div (click)="payHandler()" style='cursor: pointer'> оплатить </div>
+                        <div (click)="logoutHandler()"  style='cursor: pointer'> выйти</div>
+                    </div>
+                </div>
+            </div-->
+    </div>
+</div>
+</div>
+</div>

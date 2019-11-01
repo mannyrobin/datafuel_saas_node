@@ -1,0 +1,37 @@
+<lightbox [displayLightboxButton]='"show-feedback-lightbox-button"' [showButtonTitle]='"подписка"' (proceeded)='proceedHandler($event)'
+    [containerClass]='"playment-lightbox"'>
+    <div class='panel'>
+        <div style='padding-left: 20px; padding-bottom: 20px;' class='panel-body'>
+            <div>
+                срок действия лицензии
+                <select [(ngModel)]='period' (change)='periodChangedHandler($event)'>
+                    <option value='30'>30</option>
+                    <option value='90'>90</option>
+                    <option value='180'>180</option>
+                    <option value='360'>360</option>
+                </select> дней
+
+                <label class="switcher switcher-lg" (click)='changeTypeHandler()'>
+                    <input type="checkbox" [(ngModel)]='corp'/>
+                    <div class="switcher-indicator">
+                        <div class="switcher-yes">персональная</div>
+                        <div class="switcher-no">командная</div>
+                    </div>
+                    <span style='margin-left: 50px;'>лицензия</span>
+                </label>
+            </div>
+            <div class="row" *ngFor='let rate of filteredRates;  let i = index'>
+                <label (click)='rateChangedHandler("" + rate.Id, $event, i)'>
+                <div class="">
+                    <input type="radio" [ngModel]="selectedRate" name="rate" value="{{rate.Id}}" [disabled]='disableOption(i, corp)'/>{{rate.Name}}
+                </div>
+                <span>количество пользователей которых можно обработать в одном запросе: {{rate.Request}}</span><br/>
+                <span>look alike: {{getLookAlikeTitle(rate.Permissions)}}</span><br/>
+                <span>ограничение на экспорт: {{rate.ExportLimit}}</span><br/>
+                <span>количество запросов: {{rate.TotalRequestLimit}}</span><br/>
+                <span>цена: {{rate.Cost.toString().substr(1, rate.Cost.toString().length - 1)}}p</span><br/>
+            </label>
+            </div>
+        </div>
+    </div>
+    </lightbox>

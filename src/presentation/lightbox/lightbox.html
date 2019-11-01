@@ -1,0 +1,20 @@
+<div>
+    <a (click)='show()' [ngClass]='displayLightboxButton'>{{showButtonTitle}}</a>
+    <div class='overlay' [hidden]='!visible'>
+        <div class="modal fade" [ngClass]="{'in': visible }">
+            <div class="modal-dialog" [ngClass]='containerClass'>
+                <div class="modal-content">
+                    <div>
+                        <div>
+                            <ng-content></ng-content>
+                        </div>
+                        <div class='footer'>
+                            <button (click)='handleClosed()' class='cancel-button'>отмена</button>
+                            <button (click)='handleProceed($event)' class='action-button' [hidden]='hideFooter'>ок</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

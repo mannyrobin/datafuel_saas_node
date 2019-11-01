@@ -1,0 +1,49 @@
+#hover {
+    position:fixed;
+    background-color:black; 
+    opacity: 0.7; 
+    padding:10px; 
+    border-radius: 5px;
+    display: none;
+    font-size: 11pt!important;
+    z-index: 10;
+}
+
+.char-container {
+    height:250px; 
+}
+
+a {
+    cursor: pointer;
+}
+
+.row div {
+    margin-top: 0;
+}
+
+div.row {
+    margin-left: 0;
+}
+
+.popular-groups {
+    overflow-y: auto;
+    max-height: 280px;
+}
+
+.data-fuel-display {
+    display: block!important;
+}
+
+.modal-body {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.export-lightbox.data-fuel-display {
+    height: auto;
+    z-index: 1111;
+}
+
+.panel-body.clubs {
+    height: 312px;
+}

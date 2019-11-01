@@ -1,0 +1,16 @@
+<lightbox [showButtonTitle]='childShowButtonTitle' [containerClass]="'attach-file-lightbox-modal-dialog'" [displayLightboxButton]='"display-lightbox-button"' (proceeded)='proceedHandler()'>
+    <div class='overlay' style="padding-bottom: 10px;">
+        <div class="">
+            <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)" [uploader]="uploader"
+                class="well my-drop-zone">
+                перетащите файл сюда
+            </div>
+
+            или выберите файл
+            <input type="file" ng2FileSelect [uploader]="uploader" accept='.txt' />
+        </div>
+        <div [hidden]='!uploader.queue.length'>
+            <strong>{{ uploader.queue.length && uploader.queue[uploader.queue.length - 1].file.name }}</strong>
+        </div>
+    </div>
+</lightbox>

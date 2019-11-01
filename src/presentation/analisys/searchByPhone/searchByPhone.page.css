@@ -1,0 +1,13 @@
+:host >>> attach-file-lightbox a.display-lightbox-button {
+    margin-left: 218px;
+    margin-top: -103px;
+}
+
+div label {
+    margin-right: 60px;
+}
+
+div label span {
+    font-weight: 500;
+    margin-left: 6px;
+}

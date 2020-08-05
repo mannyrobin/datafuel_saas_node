@@ -33,7 +33,7 @@
     "emailjs": "1.0.8",
     "es6-promise": "4.0.5",
     "excel-export": "^0.5.1",
-    "express-fileupload": "0.0.5",
+    "express-fileupload": "1.1.9",
     "express-session": "1.14.1",
     "express-ws": "2.0.0",
     "ng2-bootstrap": "1.1.16",
